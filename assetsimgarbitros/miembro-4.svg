@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="600" viewBox="0 0 480 600" role="img" aria-label="Foto de Miembro del Colegio — 4 — Colegio de Árbitros">
+  <rect width="480" height="600" fill="#FFFFFF"/>
+  <rect x="4" y="4" width="472" height="592" fill="none" stroke="#0A0A0A" stroke-opacity="0.16" stroke-width="2"/>
+  <text x="240" y="292" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#0A0A0A">Miembro del Colegio — 4</text>
+  <text x="240" y="338" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" letter-spacing="3" fill="#FF2A2A">COLEGIO DE ÁRBITROS</text>
+  <rect x="170" y="402" width="140" height="6" fill="#FF2A2A"/>
+  <text x="240" y="518" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" letter-spacing="2" fill="#0A0A0A" fill-opacity="0.6">ASOCIACIÓN MUNICIPAL DE BASQUETBOL CLIZA</text>
+</svg>

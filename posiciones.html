@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabla de Posiciones y Puntaje del Campeonato | Asociación Municipal de Básquetbol Cliza</title>
+  <meta
+    name="description"
+    content="Tabla de posiciones oficial del campeonato: puntaje, diferencia, partidos jugados y W.O. por club. Asociación Municipal de Básquetbol Cliza, Cochabamba."
+  />
+  <link rel="stylesheet" href="css/global.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="js/consentimiento.js?v=2"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio Asociación Municipal de Básquetbol Cliza">
+        <picture>
+          <source srcset="logo.avif" type="image/avif" />
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.jpeg" class="brand-mark-img" alt="Logo Asociación Municipal de Básquetbol Cliza" />
+        </picture>
+        <div class="brand-text">
+          <span class="brand-title">Básquetbol <span>Cliza</span></span>
+          <span class="brand-subtitle">Asociación Municipal · Cliza</span>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir o cerrar menú de navegación"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="fixture.html" class="nav-link">Fixture</a>
+        <a href="posiciones.html" class="nav-link active">Posiciones</a>
+        <a href="clubes.html" class="nav-link">Clubes</a>
+        <a href="escuela.html" class="nav-link">Escuela Municipal</a>
+        <a href="colegio-arbitros.html" class="nav-link">Colegio de Árbitros</a>
+        <a href="admin.html" class="nav-link nav-link--admin">Administración</a>
+      </nav>
+
+      <a href="contacto.html" class="btn btn-primary" aria-label="Contacto con la Asociación Municipal de Básquetbol Cliza">Contacto</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Clasificación Oficial · Cliza</span>
+      <h1><img src="gifs/cancha-de-basketball.png" alt="" class="icono-titulo" aria-hidden="true" />Tabla de Posiciones</h1>
+      <p>
+        Consulta el puntaje acumulado, partidos jugados, victorias, derrotas, W.O., diferencia
+        de puntos y resoluciones del tribunal de disciplina por categoría.
+      </p>
+      <div class="hero-actions">
+        <a href="fixture.html" class="btn btn-primary">Ver Fixture y Resultados</a>
+        <a href="index.html" class="btn btn-outline-light">Volver al Inicio</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <form class="filter-bar" id="standingsFilters" aria-label="Filtrar tabla de posiciones">
+      <div class="field">
+        <label for="standingsCategoria">Categoría</label>
+        <select id="standingsCategoria" name="categoria">
+          <option value="todas">Selecciona o filtra categoría</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="standingsBuscar">Buscar club</label>
+        <input
+          type="search"
+          id="standingsBuscar"
+          name="club"
+          placeholder="Nombre del club..."
+        />
+      </div>
+    </form>
+
+    <section class="card card--rojo" aria-labelledby="tituloTablaOficial">
+      <div class="card-header">
+        <h2 class="card-title" id="tituloTablaOficial">Clasificación General</h2>
+        <a href="fixture.html" class="btn btn-outline-dark btn-sm">Ver Partidos</a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Club</th>
+              <th>PJ</th>
+              <th>PG</th>
+              <th>PP</th>
+              <th>W.O.</th>
+              <th>PF</th>
+              <th>PC</th>
+              <th>DIF</th>
+              <th>SANC.</th>
+              <th>PTS</th>
+            </tr>
+          </thead>
+          <tbody id="standingsTableBody">
+            <tr>
+              <td>1</td>
+              <td>Sin datos cargados</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td class="col-pts">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="table-note">
+        <strong>Sistema de puntuación:</strong> 2 pts por partido ganado · 1 pt por partido perdido
+        jugado · 0 pts por W.O. (marcador oficial 20 - 0). Las sanciones o quitas de puntos del
+        tribunal de disciplina se reflejan en la columna <strong>SANC.</strong> y en el puntaje final.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Asociación Municipal de Básquetbol Cliza</strong> · Cliza
+      </div>
+      <div class="footer-links">
+        <a href="admin.html">Acceso Administrador</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="clubes.html">Clubes</a>
+        <a href="colegio-arbitros.html">Colegio de Árbitros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="escuela.html">Escuela Municipal</a>
+        <a href="fixture.html">Fixture</a>
+        <a href="index.html">Inicio</a>
+        <a href="posiciones.html">Posiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="firma-pie">
+    <span class="firma-pie-texto">O.LoPeZ_LoLZeRo v1.0</span>
+  </div>
+
+
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
+
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          const isOpen = navMenu.classList.toggle("is-open");
+          toggleBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+    })();
+  </script>
+  <script src="js/cargar-sitio.js?v=2" data-scripts="datos,almacen,motor,iu_public,widget_contacto,inyeccion_comun"></script>
+</body>
+</html>

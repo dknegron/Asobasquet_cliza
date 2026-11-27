@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio | Asociación Municipal de Básquetbol Cliza</title>
+  <meta
+    name="description"
+    content="Sitio oficial de la Asociación Municipal de Básquetbol Cliza (Cliza, Cochabamba): resultados, fixture, tabla de posiciones, clubes y comunicados."
+  />
+  <meta property="og:title" content="Asociación Municipal de Básquetbol Cliza" />
+  <meta
+    property="og:description"
+    content="Resultados, fixture, posiciones oficiales, planillas y comunicados del básquetbol en Cliza."
+  />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="css/global.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="js/consentimiento.js?v=2"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio Asociación Municipal de Básquetbol Cliza">
+        <picture>
+          <source srcset="logo.avif" type="image/avif" />
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.jpeg" class="brand-mark-img" alt="Logo Asociación Municipal de Básquetbol Cliza" />
+        </picture>
+        <div class="brand-text">
+          <span class="brand-title">Básquetbol <span>Cliza</span></span>
+          <span class="brand-subtitle">Asociación Municipal · Cliza</span>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir o cerrar menú de navegación"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link active">Inicio</a>
+        <a href="fixture.html" class="nav-link">Fixture</a>
+        <a href="posiciones.html" class="nav-link">Posiciones</a>
+        <a href="clubes.html" class="nav-link">Clubes</a>
+        <a href="escuela.html" class="nav-link">Escuela Municipal</a>
+        <a href="colegio-arbitros.html" class="nav-link">Colegio de Árbitros</a>
+        <a href="admin.html" class="nav-link nav-link--admin">Administración</a>
+      </nav>
+
+      <a href="contacto.html" class="btn btn-primary" aria-label="Contacto con la Asociación Municipal de Básquetbol Cliza">Contacto</a>
+    </div>
+  </header>
+
+  <div class="cinta-marquee" role="marquee" aria-label="Asociación Municipal de Básquetbol Cliza">
+    <span class="cinta-marquee-texto">Asociación Municipal de Básquetbol Cliza · Asociación Municipal de Básquetbol Cliza · Asociación Municipal de Básquetbol Cliza · Asociación Municipal de Básquetbol Cliza · Asociación Municipal de Básquetbol Cliza · Asociación Municipal de Básquetbol Cliza · </span>
+  </div>
+
+  <section class="hero">
+    <img src="gifs/Img176Basketball.svg" alt="" class="hero-ilustracion" aria-hidden="true" loading="lazy" />
+    <div class="hero-inner">
+      <span class="hero-tag">Temporada Oficial · Cliza</span>
+      <h1>Asociación Municipal de Básquetbol Cliza</h1>
+      <p>
+        Acceso rápido a campeonatos, rol de partidos, tablas de posiciones, planillas de juego,
+        clubes afiliados y resoluciones oficiales del básquetbol en Cliza.
+      </p>
+      <div class="hero-actions">
+        <a href="fixture.html" class="btn btn-primary">Ver Fixture</a>
+        <a href="posiciones.html" class="btn btn-outline-light">Tabla de Posiciones</a>
+        <a href="clubes.html" class="btn btn-outline-light">Clubes y Documentos</a>
+      </div>
+      <img src="gifs/Loader basketball.svg" alt="" aria-hidden="true" width="64" height="64" loading="lazy" style="margin-top:1.25rem;opacity:.85;" />
+    </div>
+  </section>
+
+  <main class="main-content">
+    <div class="grid-2">
+      <div>
+        <section class="card card--rojo" aria-labelledby="tituloResultados">
+          <div class="card-header">
+            <h2 class="card-title" id="tituloResultados"><img src="gifs/juego-de-basquetbol.png" alt="" class="icono-titulo" aria-hidden="true" />Resultados Recientes y Próxima Jornada</h2>
+            <a href="fixture.html" class="btn btn-outline-dark btn-sm">Todo el Fixture</a>
+          </div>
+
+          <div id="homeMatchesContainer">
+            <article class="match-card">
+              <div class="match-meta">
+                <span>Categoría por definir · Fecha 1</span>
+                <span class="badge badge--programado">Programado</span>
+              </div>
+              <div class="match-team-row">
+                <span class="match-team-name">Club Local</span>
+                <span class="match-score">-</span>
+              </div>
+              <div class="match-team-row">
+                <span class="match-team-name">Club Visitante</span>
+                <span class="match-score">-</span>
+              </div>
+              <div class="match-quarters">
+                Los encuentros y planillas se mostrarán aquí al conectar los datos oficiales.
+              </div>
+              <div class="match-footer">
+                <span>Coliseo Municipal de Cliza</span>
+                <a href="planilla.html" class="btn btn-dark btn-sm">Ver Planilla</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <section class="card" aria-labelledby="tituloPosicionesResumen" style="margin-bottom: 1.5rem;">
+          <div class="card-header">
+            <h2 class="card-title" id="tituloPosicionesResumen"><img src="gifs/cancha-de-basketball.png" alt="" class="icono-titulo" aria-hidden="true" />Posiciones</h2>
+            <a href="posiciones.html" class="btn btn-primary btn-sm">Ver Tabla</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Club</th>
+                  <th>PJ</th>
+                  <th>DIF</th>
+                  <th>PTS</th>
+                </tr>
+              </thead>
+              <tbody id="homeStandingsBody">
+                <tr>
+                  <td>1</td>
+                  <td>Sin datos cargados</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td class="col-pts">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">
+            Puntaje: 2 pts victoria, 1 pt derrota jugada, 0 pts W.O. (marcador oficial 20 - 0),
+            sujeto a resoluciones del tribunal de disciplina.
+          </p>
+        </section>
+
+        <section class="card card--rojo" aria-labelledby="tituloComunicados">
+          <div class="card-header">
+            <h2 class="card-title" id="tituloComunicados"><img src="gifs/baloncesto.png" alt="" class="icono-titulo" aria-hidden="true" />Comunicados y Avisos</h2>
+          </div>
+
+          <div id="homeNoticesContainer">
+            <p class="table-note" style="margin-top: 0;">
+              Aún no hay comunicados publicados. Los avisos oficiales y reprogramaciones aparecerán en este espacio.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="grid-cards" aria-label="Misión y Visión de la Asociación" style="margin-top: 1.5rem;">
+      <article class="card card--rojo">
+        <div class="card-header">
+          <h2 class="card-title"><img src="gifs/grupo.png" alt="" class="icono-titulo" aria-hidden="true" />Misión</h2>
+        </div>
+        <p style="color: var(--color-texto-secundario); font-size: 0.94rem;">
+          Impulsar el básquetbol de Cliza hacia una nueva etapa con torneos ágiles, información abierta
+          y reglas transparentes, conectando a clubes, jugadores, árbitros y aficionados en una comunidad
+          deportiva más fuerte y participativa.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <h2 class="card-title"><img src="gifs/hombre-jugar-al-basquetbol.png" alt="" class="icono-titulo" aria-hidden="true" />Visión</h2>
+        </div>
+        <p style="color: var(--color-texto-secundario); font-size: 0.94rem;">
+          Transformar a Cliza en un referente innovador y competitivo del básquetbol, con procesos
+          ordenados, cantera en constante evolución y una organización preparada para el futuro del deporte local.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Asociación Municipal de Básquetbol Cliza</strong> · Cliza
+      </div>
+      <div class="footer-links">
+        <a href="admin.html">Acceso Administrador</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="clubes.html">Clubes</a>
+        <a href="colegio-arbitros.html">Colegio de Árbitros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="escuela.html">Escuela Municipal</a>
+        <a href="fixture.html">Fixture</a>
+        <a href="index.html">Inicio</a>
+        <a href="posiciones.html">Posiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="firma-pie">
+    <span class="firma-pie-texto">O.LoPeZ_LoLZeRo v1.0</span>
+  </div>
+
+
+<script>
+    (function () {
+      const toggleBtn = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
+
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          const isOpen = navMenu.classList.toggle("is-open");
+          toggleBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+    })();
+  </script>
+  <script src="js/cargar-sitio.js?v=2" data-scripts="datos,almacen,motor,iu_public,widget_contacto,inyeccion_comun"></script>
+</body>
+</html>

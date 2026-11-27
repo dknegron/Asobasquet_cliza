@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clubes, Reglamentos y Comunicados | Asociación Municipal de Básquetbol Cliza</title>
+  <meta
+    name="description"
+    content="Clubes afiliados, reglamentos y avisos vigentes de la Asociación Municipal de Básquetbol Cliza. Fotos de los clubes con carruseles interactivos."
+  />
+  <link rel="stylesheet" href="css/global.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="js/consentimiento.js?v=2"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio Asociación Municipal de Básquetbol Cliza">
+        <picture>
+          <source srcset="logo.avif" type="image/avif" />
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.jpeg" class="brand-mark-img" alt="Logo Asociación Municipal de Básquetbol Cliza" />
+        </picture>
+        <div class="brand-text">
+          <span class="brand-title">Básquetbol <span>Cliza</span></span>
+          <span class="brand-subtitle">Asociación Municipal · Cliza</span>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir o cerrar menú de navegación"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="fixture.html" class="nav-link">Fixture</a>
+        <a href="posiciones.html" class="nav-link">Posiciones</a>
+        <a href="clubes.html" class="nav-link active">Clubes</a>
+        <a href="escuela.html" class="nav-link">Escuela Municipal</a>
+        <a href="colegio-arbitros.html" class="nav-link">Colegio de Árbitros</a>
+        <a href="admin.html" class="nav-link nav-link--admin">Administración</a>
+      </nav>
+
+      <a href="contacto.html" class="btn btn-primary" aria-label="Contacto con la Asociación Municipal de Básquetbol Cliza">Contacto</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Institucional · Cliza</span>
+      <h1><img src="gifs/grupo.png" alt="" class="icono-titulo" aria-hidden="true" />Clubes Afiliados, Reglamentos y Comunicados</h1>
+      <p>
+        Directorio de clubes participantes, documentos normativos del campeonato, reglas oficiales
+        y avisos vigentes de la Asociación Municipal de Básquetbol Cliza.
+      </p>
+      <div class="hero-actions">
+        <a href="#seccionClubes" class="btn btn-primary">Ver Clubes</a>
+        <a href="#seccionReglamentos" class="btn btn-outline-light">Reglamentos</a>
+        <a href="#seccionComunicados" class="btn btn-outline-light">Comunicados</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <form class="filter-bar" id="clubsFilterBar" aria-label="Buscar club afiliado">
+      <div class="field">
+        <label for="clubSearchInput">Buscar club</label>
+        <input
+          type="search"
+          id="clubSearchInput"
+          name="busqueda"
+          placeholder="Escribe el nombre del club..."
+        />
+      </div>
+
+      <div class="field">
+        <label for="clubCategoriaSelect">Categoría</label>
+        <select id="clubCategoriaSelect" name="categoria">
+          <option value="todas">Todas las categorías</option>
+        </select>
+      </div>
+    </form>
+
+    <section class="card card--rojo" id="seccionClubes" aria-labelledby="tituloClubesAfiliados" style="margin-bottom: 1.5rem;">
+      <div class="card-header">
+        <h2 class="card-title" id="tituloClubesAfiliados">Clubes Afiliados</h2>
+        <span class="badge badge--programado" id="clubsCountBadge">0 clubes</span>
+      </div>
+
+      <div class="grid-cards" id="clubsGridContainer">
+        <article class="match-card">
+          <div class="match-meta">
+            <span>Afiliación Activa · Cliza</span>
+            <span class="badge badge--finalizado">Habilitado</span>
+          </div>
+          <div class="match-team-row">
+            <span class="match-team-name">Club por cargar</span>
+          </div>
+          <div class="match-quarters">
+            Categorías: Por asignar · Delegado: Por asignar
+          </div>
+          <div class="match-footer">
+            <span>Cliza</span>
+            <a href="posiciones.html" class="btn btn-dark btn-sm">Ver Posiciones</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <section class="card" id="seccionReglamentos" aria-labelledby="tituloReglamentos">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloReglamentos">Reglamentos y Documentos</h2>
+        </div>
+
+        <div id="regulationsListContainer">
+          <article class="match-card">
+            <div class="match-meta">
+              <span>Normativa Oficial</span>
+              <span class="badge badge--programado">Vigente</span>
+            </div>
+            <div class="match-team-row">
+              <span class="match-team-name">Convocatoria y Reglamento del Campeonato</span>
+            </div>
+            <div class="match-quarters">
+              Puntuación: 2 pts victoria, 1 pt derrota jugada, 0 pts W.O. (20 - 0) y resoluciones del tribunal de disciplina.
+            </div>
+            <div class="match-footer">
+              <span>Documento oficial</span>
+              <a href="posiciones.html" class="btn btn-outline-dark btn-sm">Ver Criterios</a>
+            </div>
+          </article>
+
+          <article class="match-card">
+            <div class="match-meta">
+              <span>Reglas de Juego</span>
+              <span class="badge badge--programado">FIBA</span>
+            </div>
+            <div class="match-team-row">
+              <span class="match-team-name">Reglas Oficiales de Básquetbol y Planilla</span>
+            </div>
+            <div class="match-quarters">
+              Consulta de faltas, cuartos, prórrogas, sustituciones y actas de partido.
+            </div>
+            <div class="match-footer">
+              <span>Referencia técnica</span>
+              <a href="planilla.html" class="btn btn-dark btn-sm">Ver Planilla</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card card--rojo" id="seccionComunicados" aria-labelledby="tituloComunicadosOficiales">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloComunicadosOficiales">Comunicados Oficiales</h2>
+        </div>
+
+        <div id="noticesListContainer">
+          <article class="match-card">
+            <div class="match-meta">
+              <span>Circular · Cliza</span>
+              <span class="badge badge--postergado">Aviso</span>
+            </div>
+            <div class="match-team-row">
+              <span class="match-team-name">Sin comunicados publicados todavía</span>
+            </div>
+            <div class="match-quarters">
+              Los avisos de programación, reprogramaciones y fallos del tribunal aparecerán aquí al cargar los datos.
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Asociación Municipal de Básquetbol Cliza</strong> · Cliza
+      </div>
+      <div class="footer-links">
+        <a href="admin.html">Acceso Administrador</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="clubes.html">Clubes</a>
+        <a href="colegio-arbitros.html">Colegio de Árbitros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="escuela.html">Escuela Municipal</a>
+        <a href="fixture.html">Fixture</a>
+        <a href="index.html">Inicio</a>
+        <a href="posiciones.html">Posiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="firma-pie">
+    <span class="firma-pie-texto">O.LoPeZ_LoLZeRo v1.0</span>
+  </div>
+
+
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
+
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          const isOpen = navMenu.classList.toggle("is-open");
+          toggleBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+    })();
+  </script>
+  <script src="js/cargar-sitio.js?v=2" data-scripts="datos,almacen,ui_clubes,widget_contacto,inyeccion_comun"></script>
+</body>
+</html>

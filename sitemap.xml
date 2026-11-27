@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://localhost:8765/admin.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/aviso-legal.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/clubes.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/colegio-arbitros.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/contacto.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/cookies.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/escuela.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/fixture.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/index.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/planilla.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/posiciones.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://localhost:8765/privacidad.html</loc><lastmod>2026-11-20</lastmod></url>
+</urlset>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixture y Resultados del Campeonato | Asociación Municipal de Básquetbol Cliza</title>
+  <meta
+    name="description"
+    content="Fixture oficial y resultados del campeonato organizado por la Asociación Municipal de Básquetbol Cliza: partidos por fecha, marcadores y arqueadas de cada encuentro."
+  />
+  <link rel="stylesheet" href="css/global.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="js/consentimiento.js?v=2"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio Asociación Municipal de Básquetbol Cliza">
+        <picture>
+          <source srcset="logo.avif" type="image/avif" />
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.jpeg" class="brand-mark-img" alt="Logo Asociación Municipal de Básquetbol Cliza" />
+        </picture>
+        <div class="brand-text">
+          <span class="brand-title">Básquetbol <span>Cliza</span></span>
+          <span class="brand-subtitle">Asociación Municipal · Cliza</span>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir o cerrar menú de navegación"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="fixture.html" class="nav-link active">Fixture</a>
+        <a href="posiciones.html" class="nav-link">Posiciones</a>
+        <a href="clubes.html" class="nav-link">Clubes</a>
+        <a href="escuela.html" class="nav-link">Escuela Municipal</a>
+        <a href="colegio-arbitros.html" class="nav-link">Colegio de Árbitros</a>
+        <a href="admin.html" class="nav-link nav-link--admin">Administración</a>
+      </nav>
+
+      <a href="contacto.html" class="btn btn-primary" aria-label="Contacto con la Asociación Municipal de Básquetbol Cliza">Contacto</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Programación y Marcadores · Cliza</span>
+      <h1><img src="gifs/juego-de-basquetbol.png" alt="" class="icono-titulo" aria-hidden="true" />Fixture y Resultados</h1>
+      <p>
+        Consulta los encuentros programados, marcadores oficiales, desglose por cuartos y acceso
+        a las planillas de juego de cada partido.
+      </p>
+      <div class="hero-actions">
+        <a href="posiciones.html" class="btn btn-primary">Ver Tabla de Posiciones</a>
+        <a href="index.html" class="btn btn-outline-light">Volver al Inicio</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <form class="filter-bar" id="fixtureFilters" aria-label="Filtrar partidos">
+      <div class="field">
+        <label for="filterCategoria">Categoría</label>
+        <select id="filterCategoria" name="categoria">
+          <option value="todas">Todas las categorías</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="filterFecha">Fecha / Jornada</label>
+        <select id="filterFecha" name="fecha">
+          <option value="todas">Todas las fechas</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="filterEstado">Estado</label>
+        <select id="filterEstado" name="estado">
+          <option value="todos">Todos los estados</option>
+          <option value="programado">Programado</option>
+          <option value="finalizado">Finalizado</option>
+          <option value="wo">W.O. (20 - 0)</option>
+          <option value="postergado">Postergado</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="filterClub">Buscar club</label>
+        <input
+          type="search"
+          id="filterClub"
+          name="club"
+          placeholder="Ej. Cliza, San Pedro..."
+        />
+      </div>
+    </form>
+
+    <section class="card card--rojo" aria-labelledby="tituloListadoFixture">
+      <div class="card-header">
+        <h2 class="card-title" id="tituloListadoFixture">Partidos del Campeonato</h2>
+        <button type="button" class="btn btn-outline-dark btn-sm" id="resetFiltersBtn">
+          Limpiar Filtros
+        </button>
+      </div>
+
+      <div id="fixtureMatchesContainer">
+        <article class="match-card">
+          <div class="match-meta">
+            <span>Categoría por definir · Fecha 1 · 19:00</span>
+            <span class="badge badge--programado">Programado</span>
+          </div>
+          <div class="match-team-row">
+            <span class="match-team-name">Club Local</span>
+            <span class="match-score">-</span>
+          </div>
+          <div class="match-team-row">
+            <span class="match-team-name">Club Visitante</span>
+            <span class="match-score">-</span>
+          </div>
+          <div class="match-quarters">
+            C1: - · C2: - · C3: - · C4: - (Prórroga: -)
+          </div>
+          <div class="match-footer">
+            <span>Coliseo Municipal de Cliza</span>
+            <a href="planilla.html" class="btn btn-dark btn-sm">Ver Planilla</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Asociación Municipal de Básquetbol Cliza</strong> · Cliza
+      </div>
+      <div class="footer-links">
+        <a href="admin.html">Acceso Administrador</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="clubes.html">Clubes</a>
+        <a href="colegio-arbitros.html">Colegio de Árbitros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="escuela.html">Escuela Municipal</a>
+        <a href="fixture.html">Fixture</a>
+        <a href="index.html">Inicio</a>
+        <a href="posiciones.html">Posiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="firma-pie">
+    <span class="firma-pie-texto">O.LoPeZ_LoLZeRo v1.0</span>
+  </div>
+
+
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
+      const resetBtn = document.getElementById("resetFiltersBtn");
+      const form = document.getElementById("fixtureFilters");
+
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          const isOpen = navMenu.classList.toggle("is-open");
+          toggleBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      if (resetBtn && form) {
+        resetBtn.addEventListener("click", function () {
+          form.reset();
+        });
+      }
+    })();
+  </script>
+  <script src="js/cargar-sitio.js?v=2" data-scripts="datos,almacen,motor,iu_public,widget_contacto,inyeccion_comun"></script>
+</body>
+</html>

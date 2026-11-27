@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="BOSTON - foto 1">
+  <rect width="800" height="500" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="800" height="10" fill="#FF2A2A"/>
+  <rect x="18" y="30" width="764" height="452" fill="none" stroke="#0A0A0A" stroke-opacity="0.16" stroke-width="2"/>
+  <text x="400" y="242" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="1" fill="#0A0A0A">BOSTON</text>
+  <rect x="355" y="268" width="90" height="5" fill="#FF2A2A"/>
+  <text x="400" y="308" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="4" fill="#FF2A2A">FOTO 1 DE 3</text>
+  <text x="400" y="444" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="3" fill="#0A0A0A" fill-opacity="0.6">ASOCIACION MUNICIPAL DE BASQUETBOL CLIZA</text>
+</svg>

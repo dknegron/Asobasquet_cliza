@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escuela Municipal de Básquetbol | Asociación Municipal de Básquetbol Cliza</title>
+  <meta
+    name="description"
+    content="Escuela Municipal de Básquetbol de Cliza: programa de iniciación y desarrollo de los niños y jóvenes del municipio, con formulario de inscripción de nuevos estudiantes."
+  />
+  <link rel="stylesheet" href="css/global.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="js/consentimiento.js?v=2"></script>
+  <script src="js/cargar-sitio.js?v=2" data-scripts="datos,almacen,motor,iu_public,widget_contacto,inyeccion_comun"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio Asociación Municipal de Básquetbol Cliza">
+        <picture>
+          <source srcset="logo.avif" type="image/avif" />
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.jpeg" class="brand-mark-img" alt="Logo Asociación Municipal de Básquetbol Cliza" />
+        </picture>
+        <div class="brand-text">
+          <span class="brand-title">Básquetbol <span>Cliza</span></span>
+          <span class="brand-subtitle">Asociación Municipal · Cliza</span>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir o cerrar menú de navegación"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="fixture.html" class="nav-link">Fixture</a>
+        <a href="posiciones.html" class="nav-link">Posiciones</a>
+        <a href="clubes.html" class="nav-link">Clubes</a>
+        <a href="escuela.html" class="nav-link active">Escuela Municipal</a>
+        <a href="colegio-arbitros.html" class="nav-link">Colegio de Árbitros</a>
+        <a href="admin.html" class="nav-link nav-link--admin">Administración</a>
+      </nav>
+
+      <a href="contacto.html" class="btn btn-primary" aria-label="Contacto con la Asociación Municipal de Básquetbol Cliza">Contacto</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Escuela Municipal · Cliza</span>
+      <h1><img src="gifs/hombre-jugar-al-basquetbol.png" alt="" class="icono-titulo" aria-hidden="true" />Escuela Municipal de Básquetbol</h1>
+      <p>
+        Programa de iniciación y desarrollo del básquetbol en los niños y jóvenes del
+        Municipio de Cliza. Categorías U7 a U17 con partidos oficiales de la Asociación
+        Municipal de Básquetbol Cliza.
+      </p>
+      <img src="gifs/Loader basketball.svg" alt="" aria-hidden="true" width="72" height="72" loading="lazy" style="margin-top:1rem;opacity:.9;" />
+    </div>
+  </section>
+
+  <main class="main-content">
+    <section class="card card--rojo legal inscripcion-main" aria-label="Escuela Municipal de Básquetbol">
+      <span class="legal-actualizacion">Última actualización: noviembre de 2026</span>
+
+      <h2>¿Qué es la Escuela Municipal de Básquetbol?</h2>
+      <p>
+        La Escuela Municipal es el programa de formación de los niños y jóvenes del
+        Municipio de Cliza, destinado a iniciar, desarrollar y seleccionar talentos para
+        las categorías de la Asociación Municipal de Básquetbol Cliza. Es la puerta de
+        entrada al básquetbol municipal.
+      </p>
+
+      <h2>Categorías disponibles</h2>
+      <ul>
+        <li><strong>U7 (≤ 7 años)</strong> — iniciación personalizada.</li>
+        <li><strong>U9 (≤ 9 años)</strong> — cribado, movilidad y tiro básico.</li>
+        <li><strong>U11 (≤ 11 años)</strong> — elementos oficiales del juego y introducción al juego de equipo.</li>
+        <li><strong>U13 (≤ 13 años)</strong> — elementos oficiales, juego de zona y aprendizaje de táctica.</li>
+        <li><strong>U15 (≤ 15 años)</strong> — partidos oficiales y circuito de desarrollo.</li>
+        <li><strong>U17 (≤ 17 años)</strong> — preparación para la categoría mayor.</li>
+        <li><strong>Otros</strong> — para anotaciones fuera del rango de edad (casos especiales).</li>
+      </ul>
+
+      <h2 id="inscripcion">Inscripción de nuevos estudiantes</h2>
+      <p>
+        Completa el siguiente formulario con los datos del estudiante y de su
+        representante/responsable. La Asociación confirma la alta por los canales
+        oficiales, o contactando al Colegio de Árbitros.
+      </p>
+      <form id="formInscripcion" class="inscripcion-form" aria-label="Formulario de inscripción de estudiantes">
+        <div class="field">
+          <label for="estudianteNombre">Nombre completo del estudiante</label>
+          <input type="text" id="estudianteNombre" name="estudianteNombre" autocomplete="off" required />
+        </div>
+        <div class="field">
+          <label for="estudianteEdad">Edad</label>
+          <input type="number" id="estudianteEdad" name="estudianteEdad" min="5" max="22" required />
+        </div>
+        <div class="field">
+          <label for="estudianteCategoria">Categoría de inscripción</label>
+          <select id="estudianteCategoria" name="estudianteCategoria" required>
+            <option value="">Selecciona una categoría…</option>
+            <option value="U7">U7 (≤ 7 años)</option>
+            <option value="U9">U9 (≤ 9 años)</option>
+            <option value="U11">U11 (≤ 11 años)</option>
+            <option value="U13">U13 (≤ 13 años)</option>
+            <option value="U15">U15 (≤ 15 años)</option>
+            <option value="U17">U17 (≤ 17 años)</option>
+            <option value="Otros">Otros (fuera del rango de edad)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="responsableNombre">Nombre del responsable/representante</label>
+          <input type="text" id="responsableNombre" name="responsableNombre" autocomplete="off" required />
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="off" required />
+        </div>
+        <div class="field">
+          <label for="direccion">Dirección o barrio</label>
+          <input type="text" id="direccion" name="direccion" autocomplete="off" required />
+        </div>
+        <div class="field">
+          <label for="observaciones">Observaciones (opcional)</label>
+          <textarea id="observaciones" name="observaciones" maxlength="500"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar inscripción</button>
+        <p id="inscripcionMsg" class="login-msg inscripcion-msg"></p>
+      </form>
+      <div class="inscripcion-resumen-wrap" hidden>
+        <pre id="inscripcionResumen" class="inscripcion-resumen" aria-live="polite"></pre>
+        <div class="inscripcion-acciones">
+          <button type="button" id="btnCopiarInscripcion" class="btn btn-outline-light">Copiar texto de la inscripción</button>
+          <button type="button" id="btnMailtoInscripcion" class="btn btn-outline-light">Preparar correo</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Asociación Municipal de Básquetbol Cliza</strong> · Cliza
+      </div>
+      <div class="footer-links">
+        <a href="admin.html">Acceso Administrador</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="clubes.html">Clubes</a>
+        <a href="colegio-arbitros.html">Colegio de Árbitros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="escuela.html">Escuela Municipal</a>
+        <a href="fixture.html">Fixture</a>
+        <a href="index.html">Inicio</a>
+        <a href="posiciones.html">Posiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="firma-pie">
+    <span class="firma-pie-texto">O.LoPeZ_LoLZeRo v1.0</span>
+  </div>
+
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          const isOpen = navMenu.classList.toggle("is-open");
+          toggleBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      "use strict";
+      const form = document.getElementById("formInscripcion");
+      const msg = document.getElementById("inscripcionMsg");
+      const resumen = document.getElementById("inscripcionResumen");
+      const resumenWrap = document.querySelector(".inscripcion-resumen-wrap");
+      const btnCopiar = document.getElementById("btnCopiarInscripcion");
+      const btnMailto = document.getElementById("btnMailtoInscripcion");
+      if (!form || !msg) return;
+
+      function val(id) {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() : "";
+      }
+
+      function prepEmails() {
+        const texto = (resumen && resumen.textContent || "").trim();
+        if (!texto) {
+          msg.className = "login-msg errores";
+          msg.textContent = "Primero completa y envía el formulario.";
+          return null;
+        }
+        return texto;
+      }
+
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        if (!form.checkValidity()) {
+          msg.className = "login-msg errores";
+          msg.textContent = "Completa todos los campos obligatorios antes de enviar la inscripción.";
+          return;
+        }
+        const datos = {
+          estudiante: val("estudianteNombre"),
+          edad: val("estudianteEdad"),
+          categoria: val("estudianteCategoria"),
+          responsable: val("responsableNombre"),
+          telefono: val("telefono"),
+          email: val("email"),
+          direccion: val("direccion"),
+          observaciones: val("observaciones")
+        };
+        const cuerpo = [
+          "Solicitud de inscripción — Escuela Municipal de Básquetbol Cliza",
+          "",
+          "Estudiante: " + datos.estudiante,
+          "Edad: " + datos.edad,
+          "Categoría: " + datos.categoria,
+          "Responsable/representante: " + datos.responsable,
+          "Teléfono: " + datos.telefono,
+          "Email: " + datos.email,
+          "Dirección/barrio: " + datos.direccion,
+          "Observaciones: " + (datos.observaciones || "(sin observaciones)"),
+          ""
+        ].join("\n");
+        resumen.textContent = cuerpo;
+        if (resumenWrap) resumenWrap.hidden = false;
+        msg.className = "login-msg ok";
+        msg.textContent = "Solicitud de inscripción preparada. Copia el texto o prepara el correo con los botones de abajo.";
+      });
+
+      if (btnCopiar) {
+        btnCopiar.addEventListener("click", function () {
+          const texto = prepEmails();
+          if (!texto) return;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(texto).then(function () {
+              msg.className = "login-msg ok";
+              msg.textContent = "Texto de la inscripción copiado al portapapeles.";
+            }).catch(function () {});
+          } else {
+            try { window.prompt("Copia el texto de la inscripción:", texto); } catch (err) {}
+          }
+        });
+      }
+
+      if (btnMailto) {
+        btnMailto.addEventListener("click", function () {
+          const texto = prepEmails();
+          if (!texto) return;
+          const mailto = "mailto:?" + new URLSearchParams({
+            subject: "Solicitud de inscripción — Escuela Municipal de Básquetbol Cliza",
+            body: texto
+          }).toString();
+          try { window.location.assign(mailto); } catch (err) {}
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

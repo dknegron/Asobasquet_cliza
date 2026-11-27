@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administración del Campeonato | Asociación Municipal de Básquetbol Cliza</title>
+  <meta
+    name="description"
+    content="Panel de administración para resultados, sanciones y comunicados del campeonato de la Asociación Municipal de Básquetbol Cliza."
+  />
+  <link rel="stylesheet" href="css/global.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="js/consentimiento.js?v=2"></script>
+</head>
+<body>
+  <script>
+    /* Acceso distinto a wp-admin: el panel administrativo requiere
+       contraseña + verificación en dos pasos. Si no hay sesión,
+       redirige a la página de ingreso. */
+    (function () {
+      if (sessionStorage.getItem("abmc_admin_autenticado") !== "1") {
+        location.replace("admin-ingreso.html");
+      }
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio Asociación Municipal de Básquetbol Cliza">
+        <picture>
+          <source srcset="logo.avif" type="image/avif" />
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.jpeg" class="brand-mark-img" alt="Logo Asociación Municipal de Básquetbol Cliza" />
+        </picture>
+        <div class="brand-text">
+          <span class="brand-title">Básquetbol <span>Cliza</span></span>
+          <span class="brand-subtitle">Asociación Municipal · Cliza</span>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir o cerrar menú de navegación"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="fixture.html" class="nav-link">Fixture</a>
+        <a href="posiciones.html" class="nav-link">Posiciones</a>
+        <a href="clubes.html" class="nav-link">Clubes</a>
+        <a href="escuela.html" class="nav-link">Escuela Municipal</a>
+        <a href="colegio-arbitros.html" class="nav-link">Colegio de Árbitros</a>
+        <a href="admin.html" class="nav-link nav-link--admin active">Administración</a>
+      </nav>
+
+      <a href="contacto.html" class="btn btn-primary" aria-label="Contacto con la Asociación Municipal de Básquetbol Cliza">Contacto</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Gestión Interna · Cliza</span>
+      <h1>Panel de Administración</h1>
+      <p>
+        Administra marcadores y planillas de partidos, sanciones del tribunal de disciplina y
+        comunicados oficiales de la Asociación Municipal de Básquetbol Cliza.
+      </p>
+      <div class="hero-actions">
+        <a href="#formResultado" class="btn btn-primary">Cargar Resultado</a>
+        <a href="#formSancion" class="btn btn-outline-light">Registrar Sanción</a>
+        <a href="#formComunicado" class="btn btn-outline-light">Publicar Comunicado</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <!-- Bloque de acceso administrativo -->
+    <section class="card card--rojo" id="adminAuthCard" aria-labelledby="tituloAccesoAdmin" style="margin-bottom: 1.5rem;">
+      <div class="card-header">
+        <h2 class="card-title" id="tituloAccesoAdmin">Acceso de Administrador</h2>
+        <span class="badge badge--programado" id="adminSessionBadge">Modo Local / Pendiente de Conexión</span>
+      </div>
+
+      <form class="filter-bar" id="adminLoginForm" style="margin-bottom: 0;" aria-label="Inicio de sesión administrador">
+        <div class="field">
+          <label for="adminUser">Usuario o Correo</label>
+          <input type="text" id="adminUser" name="usuario" placeholder="admin@abmc-cliza" />
+        </div>
+        <div class="field">
+          <label for="adminPass">Clave de Acceso</label>
+          <input type="password" id="adminPass" name="clave" placeholder="••••••••" />
+        </div>
+        <div class="field" style="justify-content: flex-end;">
+          <button type="submit" class="btn btn-primary" id="adminUnlockBtn">Habilitar Panel</button>
+        </div>
+      </form>
+      <p class="table-note" id="adminAuthStatus">
+        La validación segura y el guardado permanente se conectarán cuando definamos la base de datos.
+      </p>
+    </section>
+
+    <div class="grid-2" style="margin-bottom: 1.5rem;">
+      <!-- 1. Cargar resultado y planilla -->
+      <section class="card card--rojo" id="formResultado" aria-labelledby="tituloFormResultado">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloFormResultado">1. Cargar Resultado y Planilla</h2>
+        </div>
+
+        <form id="resultForm" class="filter-bar" style="display: block; box-shadow: none; border: none; padding: 0; margin-bottom: 0;">
+          <div class="grid-cards" style="margin-bottom: 0.85rem;">
+            <div class="field">
+              <label for="resCategoria">Categoría</label>
+              <input type="text" id="resCategoria" name="categoria" placeholder="Ej. Primera de Honor" />
+            </div>
+            <div class="field">
+              <label for="resFecha">Fecha / Jornada</label>
+              <input type="text" id="resFecha" name="fecha" placeholder="Ej. Fecha 1" />
+            </div>
+            <div class="field">
+              <label for="resEstado">Estado del Partido</label>
+              <select id="resEstado" name="estado">
+                <option value="programado">Programado</option>
+                <option value="finalizado">Finalizado</option>
+                <option value="wo">W.O. (20 - 0)</option>
+                <option value="postergado">Postergado</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-cards" style="margin-bottom: 0.85rem;">
+            <div class="field">
+              <label for="resLocal">Club Local</label>
+              <input type="text" id="resLocal" name="local" placeholder="Nombre club local" />
+            </div>
+            <div class="field">
+              <label for="resPtsLocal">Puntos Local</label>
+              <input type="number" id="resPtsLocal" name="ptsLocal" min="0" placeholder="0" />
+            </div>
+            <div class="field">
+              <label for="resVisitante">Club Visitante</label>
+              <input type="text" id="resVisitante" name="visitante" placeholder="Nombre club visitante" />
+            </div>
+            <div class="field">
+              <label for="resPtsVisitante">Puntos Visitante</label>
+              <input type="number" id="resPtsVisitante" name="ptsVisitante" min="0" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="field" style="margin-bottom: 0.85rem;">
+            <label for="resCuartos">Parciales por Cuarto / Observaciones de Planilla</label>
+            <input
+              type="text"
+              id="resCuartos"
+              name="cuartos"
+              placeholder="Ej. C1: 18-15 · C2: 14-16 · C3: 20-12 · C4: 19-18"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Guardar Resultado</button>
+        </form>
+      </section>
+
+      <!-- 2. Registrar sanción del tribunal -->
+      <section class="card" id="formSancion" aria-labelledby="tituloFormSancion">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloFormSancion">2. Sanciones del Tribunal</h2>
+          <span class="badge badge--programado" id="adminSancionesCount">0</span>
+        </div>
+
+        <form id="sanctionForm" style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <div class="field">
+            <label for="sancClub">Club Sancionado</label>
+            <input type="text" id="sancClub" name="club" placeholder="Nombre del club" />
+          </div>
+
+          <div class="field">
+            <label for="sancCategoria">Categoría</label>
+            <input type="text" id="sancCategoria" name="categoria" placeholder="Ej. Primera de Honor" />
+          </div>
+
+          <div class="field">
+            <label for="sancPuntos">Quita o Ajuste de Puntos</label>
+            <input type="number" id="sancPuntos" name="puntos" step="1" placeholder="Ej. -2 o 0" />
+          </div>
+
+          <div class="field">
+            <label for="sancDetalle">Resolución / Motivo</label>
+            <input
+              type="text"
+              id="sancDetalle"
+              name="detalle"
+              placeholder="Motivo disciplinario o suspensión..."
+            />
+          </div>
+
+          <button type="submit" class="btn btn-dark">Registrar Sanción</button>
+        </form>
+
+        <div id="adminSancionesList" style="margin-top: 1rem;"></div>
+      </section>
+    </div>
+
+    <!-- 3. Publicar comunicado -->
+    <section class="card card--rojo" id="formComunicado" aria-labelledby="tituloFormComunicado">
+      <div class="card-header">
+        <h2 class="card-title" id="tituloFormComunicado">3. Publicar Comunicado Oficial</h2>
+      </div>
+
+      <form id="noticeForm" style="display: flex; flex-direction: column; gap: 0.85rem;">
+        <div class="grid-cards">
+          <div class="field">
+            <label for="comTitulo">Título del Comunicado</label>
+            <input
+              type="text"
+              id="comTitulo"
+              name="titulo"
+              placeholder="Ej. Programación Fecha 2 y Reprogramaciones"
+            />
+          </div>
+          <div class="field">
+            <label for="comTipo">Tipo de Aviso</label>
+            <select id="comTipo" name="tipo">
+              <option value="circular">Circular Oficial</option>
+              <option value="reprogramacion">Reprogramación</option>
+              <option value="tribunal">Tribunal de Disciplina</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="comMensaje">Detalle del Comunicado</label>
+          <input
+            type="text"
+            id="comMensaje"
+            name="mensaje"
+            placeholder="Escribe el aviso o disposición para los clubes y aficionados..."
+          />
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary">Publicar Comunicado</button>
+        </div>
+      </form>
+    </section>
+    <div class="grid-2" style="margin-top: 1.5rem;">
+      <section class="card" aria-labelledby="tituloListaPartidosAdmin">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloListaPartidosAdmin">Partidos Cargados</h2>
+          <span class="badge badge--programado" id="adminMatchesCount">0</span>
+        </div>
+        <div id="adminMatchesList"></div>
+      </section>
+
+      <section class="card card--rojo" aria-labelledby="tituloListaComunicadosAdmin">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloListaComunicadosAdmin">Comunicados Publicados</h2>
+          <span class="badge badge--programado" id="adminNoticesCount">0</span>
+        </div>
+        <div id="adminNoticesList"></div>
+      </section>
+    </div>
+
+    <div class="grid-2" style="margin-top: 1.5rem;">
+      <section class="card" aria-labelledby="tituloClubesAdmin">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloClubesAdmin">4. Clubes Afiliados (catálogo)</h2>
+          <span class="badge badge--programado" id="clubesAdminCount">0</span>
+        </div>
+        <div id="clubesAdminList"></div>
+        <div class="clubes-admin-acciones clubes-admin-acciones--seccion">
+          <button type="button" class="btn btn-primary" id="clubesAdminNuevo">+ Nuevo club</button>
+        </div>
+      </section>
+
+      <section class="card card--rojo" aria-labelledby="tituloFormClub">
+        <div class="card-header">
+          <h2 class="card-title" id="tituloFormClub">Datos del club afiliado</h2>
+        </div>
+        <form id="clubesAdminForm" class="clubes-admin-form" style="display: grid; gap: 0.85rem;">
+          <div class="field">
+            <label for="clubNombre">Nombre del club</label>
+            <input type="text" id="clubNombre" name="nombre" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="clubCategoria">Categoría(s)</label>
+            <input type="text" id="clubCategoria" name="categoria" placeholder="Ej. Primera de Honor" />
+          </div>
+          <div class="field">
+            <label for="clubSlug">Slug (para fotos)</label>
+            <input type="text" id="clubSlug" name="slug" placeholder="Ej. mi-club" />
+          </div>
+          <div class="field">
+            <label for="clubFotos">Fotos (una URL por línea, opcional)</label>
+            <textarea id="clubFotos" name="fotos" rows="4" spellcheck="false" placeholder="Ej. https://ejemplo.com/foto-1.jpg"></textarea>
+          </div>
+          <div class="clubes-admin-hint" id="clubesAdminHint"></div>
+          <div class="field">
+            <div class="clubes-admin-acciones">
+              <button type="submit" class="btn btn-primary">Guardar club</button>
+              <button type="button" class="btn btn-outline-light" id="clubesAdminCancelar">Cancelar</button>
+            </div>
+          </div>
+          <div class="field">
+            <div id="clubesAdminMsg" class="clubes-admin-msg"></div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Asociación Municipal de Básquetbol Cliza</strong> · Cliza
+      </div>
+      <div class="footer-links">
+        <a href="admin.html">Acceso Administrador</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="clubes.html">Clubes</a>
+        <a href="colegio-arbitros.html">Colegio de Árbitros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="escuela.html">Escuela Municipal</a>
+        <a href="fixture.html">Fixture</a>
+        <a href="index.html">Inicio</a>
+        <a href="posiciones.html">Posiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="firma-pie">
+    <span class="firma-pie-texto">O.LoPeZ_LoLZeRo v1.0</span>
+  </div>
+
+
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
+      const loginForm = document.getElementById("adminLoginForm");
+      const statusText = document.getElementById("adminAuthStatus");
+      const sessionBadge = document.getElementById("adminSessionBadge");
+
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener("click", function () {
+          const isOpen = navMenu.classList.toggle("is-open");
+          toggleBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      if (loginForm && statusText && sessionBadge) {
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          sessionBadge.textContent = "Interfaz Lista · Sin Base Conectada";
+          statusText.textContent =
+            "Vista previa habilitada en local. Al conectar la base de datos gratuita se verificará la sesión real.";
+        });
+      }
+    })();
+  </script>
+  <script src="js/cargar-sitio.js?v=2" data-scripts="datos,almacen,ui_admin,widget_contacto,inyeccion_comun,admin_clubes"></script>
+</body>
+</html>

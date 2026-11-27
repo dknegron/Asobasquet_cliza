@@ -1,0 +1,8 @@
+# robots.txt - sitio de la Asociación Municipal de Básquetbol Cliza
+# Acceso total para los rastreadores de buscadores.
+User-agent: *
+Allow: /
+
+# Mapa de sitio
+# (ajusta el dominio al que se usa para este sitio)
+Sitemap: https://localhost:8765/sitemap.xml

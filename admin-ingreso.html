@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso Administrador | Asociación Municipal de Básquetbol Cliza</title>
+  <meta
+    name="description"
+    content="Ingreso al panel administrativo: contraseña y verificación en dos pasos (2FA). Acceso distinto a wp-admin."
+  />
+  <link rel="stylesheet" href="css/global.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="js/consentimiento.js?v=2"></script>
+  <script src="js/cargar-sitio.js?v=2" data-scripts="inyeccion_comun"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio Asociación Municipal de Básquetbol Cliza">
+        <picture>
+          <source srcset="logo.avif" type="image/avif" />
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.jpeg" class="brand-mark-img" alt="Logo Asociación Municipal de Básquetbol Cliza" />
+        </picture>
+        <div class="brand-text">
+          <span class="brand-title">Básquetbol <span>Cliza</span></span>
+          <span class="brand-subtitle">Asociación Municipal · Cliza</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Acceso Administrador · Cliza</span>
+      <h1>Ingreso al panel administrativo</h1>
+      <p>
+        Verificación en dos pasos: primero tu contraseña y, a continuación, el código de
+        verificación (TOTP de 30 segundos) que se muestra en esta página. El acceso a
+        <code>admin.html</code> ahora requiere esta ruta de ingreso.
+      </p>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <section class="card card--rojo login-page" aria-label="Formulario de ingreso">
+      <form id="formLogin" class="login-form">
+        <div class="field">
+          <label for="contrasena">Contraseña</label>
+          <input
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="codigo2fa">Código de verificación (2FA)</label>
+          <input
+            type="text"
+            id="codigo2fa"
+            name="codigo2fa"
+            inputmode="numeric"
+            maxlength="6"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+        <p id="msgLogin" class="login-msg"></p>
+      </form>
+
+      <div class="login-otp">
+        <p class="login-otp-texto">Código de verificación: <code id="otpTexto">—</code></p>
+        <p class="login-otp-texto--sutil">
+          Secreto (para añadir a una app de autenticación):
+          <code id="otpSecreto">—</code>
+        </p>
+      </div>
+
+      <p class="login-recuperar">
+        <a href="index.html">Volver al inicio</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Asociación Municipal de Básquetbol Cliza</strong> · Cliza
+      </div>
+      <div class="footer-links">
+        <a href="admin.html">Acceso Administrador</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="clubes.html">Clubes</a>
+        <a href="colegio-arbitros.html">Colegio de Árbitros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="escuela.html">Escuela Municipal</a>
+        <a href="fixture.html">Fixture</a>
+        <a href="index.html">Inicio</a>
+        <a href="posiciones.html">Posiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="firma-pie">
+    <span class="firma-pie-texto">O.LoPeZ_LoLZeRo v1.0</span>
+  </div>
+
+  <script src="js/otp_admin.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      const PASSWORDS_URL = "secretos/contrasena_admin.txt";
+      const OTP_URL = "secretos/otp_admin.secret.txt";
+      const CLAVE_BLOQUEO = "abmc_bloqueo_admin";
+      const CLAVE_FALLIDOS = "abmc_fallidos_admin";
+      const FALLIDOS_MAX = 5;
+      const BLOQUEO_MS = 15 * 60 * 1000;
+
+      const form = document.getElementById("formLogin");
+      const inputContrasena = document.getElementById("contrasena");
+      const inputCodigo = document.getElementById("codigo2fa");
+      const msg = document.getElementById("msgLogin");
+      const otpTexto = document.getElementById("otpTexto");
+      const otpSecreto = document.getElementById("otpSecreto");
+
+      let otpSecretoVariable = null;
+
+      function mostrarMsg(texto, clase) {
+        msg.textContent = texto;
+        msg.className = "login-msg " + (clase || "");
+      }
+
+      function bloqueoActivo() {
+        try {
+          return parseInt(localStorage.getItem(CLAVE_BLOQUEO) || "0", 10) > Date.now();
+        } catch (err) {
+          return false;
+        }
+      }
+
+      function fallidos() {
+        try {
+          return parseInt(localStorage.getItem(CLAVE_FALLIDOS) || "0", 10);
+        } catch (err) {
+          return 0;
+        }
+      }
+
+      function bloquearCuenta() {
+        const hasta = Date.now() + BLOQUEO_MS;
+        try {
+          localStorage.setItem(CLAVE_BLOQUEO, String(hasta));
+        } catch (err) {}
+        const minutos = Math.max(1, Math.ceil(BLOQUEO_MS / 60000));
+        mostrarMsg(
+          "Demasiados intentos incorrectos. Cuenta bloqueada por " + minutos +
+          " minutos. Vuelve a intentarlo más tarde.",
+          "errores"
+        );
+      }
+
+      function cargarSecretos() {
+        return Promise.all([
+          fetch(PASSWORDS_URL).then(function (resp) { return resp.text(); }),
+          fetch(OTP_URL).then(function (resp) { return resp.text(); })
+        ]).then(function (resultados) {
+          otpSecretoVariable = (resultados[1] || "").trim();
+          return (resultados[0] || "").trim();
+        });
+      }
+
+      function actualizarOtp() {
+        if (!otpSecretoVariable) return;
+        window.generarOtpAdmin(otpSecretoVariable).then(function (codigo) {
+          otpTexto.textContent = codigo || "—";
+          otpSecreto.textContent = otpSecretoVariable;
+        }).catch(function () {});
+      }
+
+      function iniciarOtp() {
+        cargarSecretos()
+          .then(function () {
+            actualizarOtp();
+            setInterval(actualizarOtp, 5000);
+          })
+          .catch(function () {
+            mostrarMsg("No se pudo cargar el código de verificación (2FA). Inténtalo de nuevo.", "errores");
+          });
+      }
+
+      function validar(ev) {
+        ev.preventDefault();
+        form.querySelectorAll("input").forEach(function (input) { input.disabled = true; });
+        const boton = form.querySelector("button[type=submit]");
+        if (boton) boton.disabled = true;
+
+        const habilitar = function () {
+          form.querySelectorAll("input").forEach(function (input) { input.disabled = false; });
+          if (boton) boton.disabled = false;
+        };
+
+        if (bloqueoActivo()) {
+          mostrarMsg("Tu cuenta está bloqueada. Vuelve a intentarlo más tarde.", "errores");
+          habilitar();
+          return;
+        }
+        if (!inputContrasena.value.trim()) {
+          mostrarMsg("Ingresa tu contraseña.", "advertencias");
+          habilitar();
+          return;
+        }
+
+        cargarSecretos().then(function (contrasena) {
+          const correcta = inputContrasena.value.trim() === contrasena;
+
+          if (!correcta) {
+            const f = fallidos() + 1;
+            try { localStorage.setItem(CLAVE_FALLIDOS, String(f)); } catch (err) {}
+            if (f >= FALLIDOS_MAX) {
+              bloquearCuenta();
+              return;
+            }
+            mostrarMsg(
+              "Contraseña incorrecta. Intentos restantes: " + (FALLIDOS_MAX - f) + ".",
+              "advertencias"
+            );
+            habilitar();
+            return;
+          }
+
+          try { localStorage.setItem(CLAVE_FALLIDOS, "0"); } catch (err) {}
+
+          const codigo = (inputCodigo.value || "").trim();
+          window.generarOtpAdmin(otpSecretoVariable).then(function (otpActual) {
+            const otpCorrecto =
+              codigo.length === 6 && !!otpActual && codigo === otpActual;
+            if (!otpCorrecto) {
+              const f = fallidos() + 1;
+              try { localStorage.setItem(CLAVE_FALLIDOS, String(f)); } catch (err) {}
+              if (f >= FALLIDOS_MAX) {
+                bloquearCuenta();
+                return;
+              }
+              mostrarMsg(
+                "Código de verificación (2FA) incorrecto. Intentos restantes: " +
+                (FALLIDOS_MAX - f) + ".",
+                "advertencias"
+              );
+              habilitar();
+              return;
+            }
+
+            mostrarMsg("Acceso correcto. Redirigiendo al panel administrativo...", "ok");
+            sessionStorage.setItem("abmc_admin_autenticado", "1");
+            location.replace("admin.html");
+          }).catch(function () {
+            mostrarMsg("No se pudo verificar el código de verificación (2FA). Inténtalo de nuevo.", "errores");
+            habilitar();
+          });
+        }).catch(function () {
+          mostrarMsg("No se pudo verificar la credencial. Inténtalo de nuevo.", "errores");
+          habilitar();
+        });
+      }
+
+      form.addEventListener("submit", validar);
+      document.addEventListener("DOMContentLoaded", iniciarOtp);
+    })();
+  </script>
+</body>
+</html>
